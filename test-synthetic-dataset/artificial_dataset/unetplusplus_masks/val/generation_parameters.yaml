@@ -1,0 +1,59 @@
+input:
+  allowed_files:
+  - WAV
+  - wav
+  - mp3
+  - flac
+  labels_format: folders
+  limit_n_per_class: 0
+  limit_positives: 0
+output:
+  color_mode: BW
+  concatenate: false
+  highpass_variable: 10
+  image_height: 640
+  image_width: 640
+  include_boxes: true
+  include_coco_masks: false
+  include_hrnet_masks: false
+  include_kaytoo: true
+  include_soundfile: false
+  include_spectrogram: true
+  include_unetplusplus_masks: true
+  include_yolo_masks: false
+  length: 10
+  log_scale_masks: true
+  lowpass_variable: 10
+  mask_threshold_db: 5
+  n: 1000
+  negative_overlay_range:
+  - 0
+  - 3
+  overwrite_output_path: true
+  positive_overlay_range:
+  - 1
+  - 5
+  rainbow_frequency: false
+  repetitions:
+  - 1
+  - 4
+  single_class: false
+  snr_range:
+  - 0.1
+  - 0.9
+  spec_params:
+    hop_length: 512
+    n_fft: 2048
+    win_length: 2048
+  val_ratio: 0.8
+paths:
+  dataset: test-dataset
+  do_train_val_split: false
+  negative: negative
+  noise: noise
+  output: augmented_dataset_output
+  vocalisations: vocalisations
+plot:
+  color_filter: dusk
+  show_labels: true
+  toggle: true

@@ -11,7 +11,7 @@ for mps, run `export PYTORCH_ENABLE_MPS_FALLBACK=1`
 
 ---
 
-This framework builds upon the [bioacoustic data synthesic](https://github.com/KasparSoltero/bioacoustic-data-synthesis) framework. It involves two stages.
+This repo builds on the [bioacoustic data synthesic](https://github.com/KasparSoltero/bioacoustic-data-synthesis) framework. It involves two stages.
 
 - stage 1 (isolator):
 
@@ -22,7 +22,7 @@ train-mask2former.py trains the mask2former model on the synthetic dataset to 'i
 train-recogniser.py uses the trained isolator model to train a small MLP head with BirdNET to segment and classify vocalisations by species.
 
 
-you must clone the [birdnet analyzer repo](https://birdnet-team.github.io/BirdNET-Analyzer/) and install it as a package i.e. `uv pip install -e path-to-cloned-repo`
+clone the [birdnet analyzer repo](https://birdnet-team.github.io/BirdNET-Analyzer/) and install it as a package i.e. `uv pip install -e path-to-cloned-repo`
 
 the recogniser folder contains scripts for localisation and blind synchronisation using the recogniser model.
 
