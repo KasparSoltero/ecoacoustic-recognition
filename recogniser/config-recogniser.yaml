@@ -1,0 +1,61 @@
+paths:
+  # Directory where all outputs (models, plots, logs) will be saved.
+  # warning: this directory is overwritten each run
+  output_dir: "models/models-recogniser"
+
+  # Path to the dataset for training the recogniser.
+  # This directory must contain the audio files
+  data_dir: 'test-synthetic-dataset'
+  # relative paths to images, masks, and audio files
+  masks_path: 'augmented_dataset_output/artificial_dataset/unetplusplus_masks' # this should contain 'generation_params.yaml' detailing the spectrogram settings for this dataset.
+  audio_path: 'classifiers/augmented_dataset/sound_files'  
+  # Format: id,species_name (e.g., 0,great_tit)
+  species_value_map: 'species_value_map.csv'
+  test_inference_audio_path: 'test-audio-1min.WAV'
+
+# Parameters for the pre-trained Mask2Former model (the "isolator")
+isolator:
+  # Path to the saved, pre-trained Mask2Former model directory.
+  # This directory should contain the model weights, processor config,
+  # and the 'training_params.yaml' and 'dataset_params.yaml' from its
+  # own training run.
+  model_dir: "models/models-mask2former/test-model"
+  model_path: "best_model"
+  score_threshold: 0.6
+
+# Parameters for BirdNET feature extraction
+birdnet:
+  # Minimum confidence score for BirdNET to consider a detection valid
+  # and return an embedding.
+  # min_confidence: 0.25
+
+recogniser:
+  iou_threshold: 0.15
+  confidence_threshold: 0.95
+
+# Configuration for the classifier head model
+model:
+  # A list of integer sizes for the hidden layers of the MLP classifier.
+  hidden_sizes: [512, 256]
+  dropout_rate: 0.5
+  baseline: false # whether this is a baseline training/eval run (baseline is not functional at the moment)
+  confidence_threshold: 0.95
+  
+# Training hyperparameters
+training:
+  # Number of epochs to train the classifier head.
+  epochs: 50
+  batch_size: 64
+  learning_rate: 0.001
+  validation_split: 0.2
+  random_state: 42
+
+# Settings for UMAP visualization of the embedding space
+visualization:
+  umap_n_neighbors: 15
+  min_dist: 0.1
+  random_state: 42
+
+localisation:
+  grid_size: [500,500] # in meters (x,y)
+  consistency_threshold: 0.02

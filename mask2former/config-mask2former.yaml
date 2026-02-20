@@ -1,0 +1,28 @@
+# --- Data ---
+# Path to the root directory of custom dataset. This can be generated using: https://github.com/KasparSoltero/bioacoustic-data-synthesis
+# The structure should be:
+# data_dir/
+#  ├── train/
+#  │   ├── images/
+#  │   └── masks/
+#  └── val/
+#      ├── images/
+#      └── masks/
+data_dir: "test-synthetic-dataset/artificial_dataset/unetplusplus_masks"
+
+# Path to a single image for testing the pre-trained model's inference capabilities.
+test_inference_image_path: 'test-synthetic-dataset/artificial_dataset/unetplusplus_masks/train/images/6.png'
+visualize_ground_truth_mask: true
+test_audio_path: "test-audio.WAV" 
+
+# --- Model ---
+resize_size: 640
+pretrained_model_id: "facebook/mask2former-swin-tiny-coco-instance"
+batch_size: 4 
+epochs: 1
+num_classes: 1 # We use one class of interest: "vocalisation". The background is handled implicitly.
+class_name: "vocalisation"
+
+# --- Output ---
+output_dir: "models/models-mask2former/test-model" # fine-tuned model weights saved here
+output_audio_dir: "models/models-mask2former/test-audio/" 
