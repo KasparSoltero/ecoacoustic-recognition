@@ -15,7 +15,7 @@ This repo builds on the [bioacoustic data synthesic](https://github.com/KasparSo
 
 - stage 1 (isolator):
 
-train-mask2former.py trains the mask2former model on the synthetic dataset to 'isolate' vocalisations. This is a single-clas mask segmenentation of the spectrogram to precisely crop all vocalisations.
+train-mask2former.py trains the mask2former model on the synthetic dataset to 'isolate' vocalisations. This is a single-class mask segmenentation of the spectrogram to precisely crop all vocalisations.
 
 - stage 2 (recogniser):
 
